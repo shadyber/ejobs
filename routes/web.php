@@ -41,3 +41,4 @@ Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@update_avatar');
 Route::resource('/jobs','JobController'); 
  Route::resource('/transaction','JobController');  
+ Route::post('/payment/add-funds/paypal','PaymentController@payWithpaypal');
