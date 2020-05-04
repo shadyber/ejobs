@@ -43,8 +43,8 @@ $transaction = new \PayPal\Api\Transaction();
 $transaction->setAmount($amount);
 
 $redirectUrls = new \PayPal\Api\RedirectUrls();
-$redirectUrls->setReturnUrl("http://ejobs.local/home")
-    ->setCancelUrl("http://ejobs.local/profile");
+$redirectUrls->setReturnUrl("http://nlaoe.com/home")
+    ->setCancelUrl("http://nlaoe.com/profile");
 
 $payment = new \PayPal\Api\Payment();
 $payment->setIntent('sale')
