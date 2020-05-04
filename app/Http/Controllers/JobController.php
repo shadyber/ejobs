@@ -82,8 +82,8 @@ class JobController extends Controller
     {
         //
   $user=Auth::user();
-  return $user->projects();
- return view('jobs.show')->with(['job'=> $job,'employer'=>$employer]);
+  //return $user->projects;
+ return view('jobs.show')->with(['job'=> $job,'employer'=>$user]);
         
     }
 

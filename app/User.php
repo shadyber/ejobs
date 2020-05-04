@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Job;
+use App\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,6 +13,10 @@ class User extends Authenticatable
     public function projects()
      {
          return $this->hasMany(Job::class);
+     }
+   public function transactions()
+     {
+         return $this->hasMany(Transaction::class);
      }
 
     /**

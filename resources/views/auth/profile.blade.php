@@ -19,21 +19,21 @@
 
                 <h3 class="profile-username text-center">{{$user->name}}</h3>
 
-                <p class="text-muted text-center">{{$user->email}}</p>
+                <p class="text-muted text-center">{{$balance}} ETB</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Followers</b> <a class="float-right">1,322</a>
-                  </li>
+                    <b>Employer </b> <a class="float-right"><small><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></a>
+                  </li></small></a>
                   <li class="list-group-item">
-                    <b>Following</b> <a class="float-right">543</a>
+                    <b>employee</b> <a class="float-right"><small><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></small></a>
                   </li>
                   <li class="list-group-item">
                     <b>Friends</b> <a class="float-right">13,287</a>
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <a href="#" class="btn btn-info btn-block"><b>Hire Me</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -88,6 +88,7 @@
                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
                   <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                     <li class="nav-item"><a class="nav-link" href="#transactions" data-toggle="tab">Transaction History</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -123,8 +124,6 @@
                     </div>
                     <!-- /.post -->
                   @endforeach
-                    
- 
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
@@ -175,6 +174,7 @@
                     <!-- /.post -->
                   </div>
                   <!-- /.tab-pane -->
+
                   <div class="tab-pane" id="timeline">
                     <!-- The timeline -->
                     <div class="timeline timeline-inverse">
@@ -321,8 +321,8 @@
  
 
   
-  <form action="/profile" method="post" enctype="multipart/form-data">
-                @csrf
+                    <form action="/profile" method="post" enctype="multipart/form-data">
+                     @csrf
               
  
                       <div class="input-group">
@@ -338,11 +338,47 @@
                
                         </form>
 
-                    </div>
+                    </div>  
+  <div id="transactions" class="tab-pane">
+    <div class="card-body table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>amount</th>
+                      <th>currency</th>
+                      <th>method</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+   @foreach ($transaction as $transact)
+   
+                    <tr>
+                      <td>{{$transact->transaction_id}}</td>
+                      <td>{{$transact->amount}}</td>
+                      <td>{{$transact->currency}}</td>
+                      <td>{{$transact->method}}</td>
+                      <td><span class="tag tag-success">{{$transact->created_at}}</span></td>
+                      <td>{{$transact->status}}</td>
+                    </tr>
+                 
+         
+                               
+   @endforeach 
+   
+                 </tbody>
+                </table>
+              </div>  
+  </div>
 
                   </div>
                   <!-- /.tab-pane -->
-                </div>
+
+                  
+
+       </div>
                 <!-- /.tab-content -->
               </div><!-- /.card-body -->
             </div>
@@ -351,10 +387,18 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
+
+
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
  
  
   
+  
+  
+  
   @endsection
+
+           

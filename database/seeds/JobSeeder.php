@@ -22,7 +22,7 @@ class JobSeeder extends Seeder
           'user_id'  => $user->id,
          'title' => $faker->sentence,
         'detail' => $faker->paragraph,
-        'job_category'  => $faker->randomDigit,
+        'job_category'  => 1,
         'budget' => $faker->randomDigit,
         'required_skill' => $faker->word,
         'job_type' => $faker->address,

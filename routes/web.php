@@ -38,5 +38,6 @@ Route::get('/withdraw', 'AccountController@withdraw')->name('withdraw');
 
 
 Route::get('/profile', 'ProfileController@index');
-Route::post('profile', 'ProfileController@update_avatar');
-Route::resource('jobs','JobController');  
+Route::post('/profile', 'ProfileController@update_avatar');
+Route::resource('/jobs','JobController'); 
+ Route::resource('/transaction','JobController');  

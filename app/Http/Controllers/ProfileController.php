@@ -20,6 +20,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+ 
+
     public function index()
     {
         
@@ -29,7 +32,13 @@ class ProfileController extends Controller
   $user=Auth::user();
   $jobs=$user->projects;
   //print($jobs);
-        return view('auth.profile')->with(['user'=>$user,'page'=>$page,'jobs'=>$jobs]);
+  
+$transactions=$user->transactions;
+$balance=0;
+ foreach($transactions as $transaction){
+$balance+=$transaction->amount;
+ }
+        return view('auth.profile')->with(['user'=>$user,'page'=>$page,'jobs'=>$jobs,'balance'=>$balance,'transaction'=>$transactions]);
     }
 
     public function store(Request $request){
