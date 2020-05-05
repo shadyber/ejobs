@@ -42,3 +42,24 @@ Route::post('/profile', 'ProfileController@update_avatar');
 Route::resource('/jobs','JobController'); 
  Route::resource('/transaction','JobController');  
  Route::post('/payment/add-funds/paypal','PaymentController@payWithpaypal');
+
+ Route::get('stripe', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+
+Route::get('facebook', function () {
+    return view('facebook');
+});
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');
+
+Route::get('google', function () {
+
+    return view('googleAuth');
+
+});
+
+    
+
+Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
+
+Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');

@@ -18,14 +18,29 @@ class User extends Authenticatable
      {
          return $this->hasMany(Transaction::class);
      }
+       public function addNew($input)
+    {
+        $check = static::where('facebook_id',$input['facebook_id'])->first();
+
+
+        if(is_null($check)){
+            return static::create($input);
+        }
+
+
+        return $check;
+    }
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    
+ protected $fillable = [
+
+        'name', 'email', 'password', 'google_id' ,'facebook_id'
+
     ];
 
     /**
